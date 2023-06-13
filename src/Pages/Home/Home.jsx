@@ -6,15 +6,15 @@ import './Home.css';
 
 const Home = () => {
   const chartRef = useRef(null);
-  let chartInstance = null; // Stocker l'instance du graphique
+  const chartInstanceRef = useRef(null);
 
   useEffect(() => {
-    if (chartRef && chartRef.current) {
-      const chartElement = chartRef.current.getContext('2d');
+    const chartElement = chartRef.current;
 
-      if (chartInstance) {
+    if (chartElement) {
+      if (chartInstanceRef.current) {
         // Détruire le graphique existant si une instance existe
-        chartInstance.destroy();
+        chartInstanceRef.current.destroy();
       }
 
       const chartConfig = {
@@ -53,13 +53,13 @@ const Home = () => {
         },
       };
 
-      chartInstance = new Chart(chartElement, chartConfig);
+      chartInstanceRef.current = new Chart(chartElement, chartConfig);
     }
 
     // Nettoyer le graphique lors du démontage du composant
     return () => {
-      if (chartInstance) {
-        chartInstance.destroy();
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
       }
     };
   }, []);
