@@ -1,0 +1,40 @@
+.offreInfos table{
+    width: 100%;
+    min-width: 750px;
+}
+.offreInfos table th{
+    padding-bottom: 12px;
+    font-size: 13px;
+    text-align: left;
+    border-bottom: 1px solid var(--blue);
+}
+.offreInfos table tr td{
+    padding-top: 20px;
+}
+.offreInfos table tr td button{
+    cursor: pointer;
+}
+.offreInfos table tr td button[title] {
+    position: relative;
+}
+.offreInfos table tr td button[title]::after {
+    content: attr(title);
+    background-color: var(--black2);
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 3px;
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    z-index: 1;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.offreInfos table tr td button[title]:hover::after {
+    opacity: 1;
+}
+  
+  
